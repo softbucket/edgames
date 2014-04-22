@@ -1,0 +1,8 @@
+h1 id="page_title" Navigate by Category
+- if @show_category then
+  - @categories.each do |category|
+    p
+      = link_to category.name, controller:"navigate_category", action:"index", query:category.name
+- if @show_products
+  = link_to "<< Back", "/navigate_category"
+  = render template:"list_items/products"

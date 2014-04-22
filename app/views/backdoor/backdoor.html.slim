@@ -1,0 +1,13 @@
+h1 id="page_title" Backdoor
+
+div id="Backdoor information"
+  form method="post" action="backdoor"
+    label for="rubycode" RubyCode: 
+    textarea id="rubycode" name="rubycode"
+      = @rubycode_content
+    input type="submit" id="submit" value="Submit!"
+    p
+      | example input:
+      | category_3ds =  ProductCategory.where("name='3DS'").first
+      | @debug = Product.create(name:"Virtue's Last Reward", rating:"M", price:3999, stock:5,product_category_id:category_3ds.id).inspect
+      

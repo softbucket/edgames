@@ -1,0 +1,5 @@
+h1 id="page_title" = @cms_current.page_name
+div id="content"
+  - @cms_current.text_content.split("\n").each do |line|
+    = line
+    br

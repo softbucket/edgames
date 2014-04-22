@@ -1,0 +1,4 @@
+div class="list_results"
+  - @items.each do |item|
+    p
+      = link_to item.name, controller: "product", action: "product", id: item.id

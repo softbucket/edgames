@@ -1,0 +1,23 @@
+h1 id="page_title" Search a Product
+div id="search"
+  form method="get" action="search"
+    label for="search_term" Search Term: 
+    input type="text" name="search_term" id="search_term" value="#{@search_term}"
+    select name="category" id="ddl_category"
+      option name="category" value="" All Products
+      - ProductCategory.all.to_a.each do |category|
+        option name="category" value=category.name selected=((category.name==@category_name) ? true : nil) = category.name
+    input type="submit" id="submit" value="Search!"
+div id="search_response"
+  h3
+  - if not params[:search_term].nil?
+    - if @searches.count == 0
+      = "No search results for #{@search_term}"
+    - else
+      = "Found #{pluralize(@searches.count, 'product')} for #{@search_term}"
+    - if @category_name != ""
+      = " in #{@category_name}."
+    - else
+      = " in all categories."
+      
+= render template:"list_items/products"
