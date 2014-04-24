@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422184814) do
+ActiveRecord::Schema.define(version: 20140424182106) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -65,15 +65,22 @@ ActiveRecord::Schema.define(version: 20140422184814) do
   end
 
   create_table "line_items", force: true do |t|
-    t.integer  "quantiy"
+    t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "order_id"
+    t.integer  "product_id"
   end
 
   create_table "orders", force: true do |t|
     t.boolean  "is_cart"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "session_id"
+    t.integer  "customer_id"
+    t.boolean  "paid"
+    t.integer  "total_cost"
+    t.boolean  "shipped"
   end
 
   create_table "product_categories", force: true do |t|
@@ -88,6 +95,7 @@ ActiveRecord::Schema.define(version: 20140422184814) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "product_id"
+    t.string   "avatar"
   end
 
   create_table "products", force: true do |t|
@@ -101,6 +109,13 @@ ActiveRecord::Schema.define(version: 20140422184814) do
     t.datetime "updated_at"
     t.integer  "product_category_id"
     t.boolean  "on_sale"
+  end
+
+  create_table "provinces", force: true do |t|
+    t.string   "province_code"
+    t.decimal  "tax_rate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "recently_vieweds", force: true do |t|

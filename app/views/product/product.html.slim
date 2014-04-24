@@ -1,4 +1,6 @@
 h1 id="page_title" Product View
+- if @image_url
+  img src="#{@image_url}" id="main_product_image" width="300px"
 p
   = "Product Name: #{@product.name}"
 p
@@ -9,3 +11,11 @@ p
   = "Quantity: #{@product.stock}"
 p
   = "Platform: #{@product.platform}"
+p
+  = link_to "Add to cart", {controller: :product, action: :product, id: params[:id]}, id: "add_to_cart_link"
+p
+  - #added for 1 flash requirement
+  = "Last product viewed: #{flash[:last_product]}"
+  - flash[:last_product] = @product.name
+div hidden=true id="add_to_cart_url" var="#{root_url}add_to_cart/index?id=#{@product.id}#{raw('&')}quantity=1"
+div hidden=true id="current_url" var="#{request.original_url}"

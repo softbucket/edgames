@@ -1,5 +1,11 @@
 Edgames::Application.routes.draw do
   
+  get "pay_pal_process/index"
+  get "submit_cart/index"
+  post "submit_cart/index"
+  get "check_out/index"
+  get "view_cart/index"
+  get "add_to_cart/index"
   get "static_filter_products", to:"static_filter_products#index"
   get "navigate_category", to:"navigate_category#index"
   
@@ -16,7 +22,7 @@ Edgames::Application.routes.draw do
   #for pretty auto_cms capabilities
   
   Cms.all.each {|cms_page|
-    get cms_page.page_name, to: ("cms_output#output"), as:"cms_#{cms_page.page_name}"
+    get "/#{cms_page.page_name}", to: ("cms_output#output"), as:"cms_#{cms_page.page_name}"
   }
   
   devise_for :admin_users, ActiveAdmin::Devise.config

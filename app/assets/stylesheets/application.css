@@ -19,6 +19,13 @@ body
   
 }
 
+#flash_message
+{
+  position: fixed;
+  left: 200px;
+  background-color: #ddd;
+}
+
 #site_title
 {
   margin: 25px;

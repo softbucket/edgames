@@ -1,0 +1,29 @@
+h1 id="page_title" Check Out
+h3 Order Details
+- @cart.each do |order_line|
+  p
+    = order_line[:quantity]
+    = " #{order_line[:product].name}"
+    = " (#{number_to_currency(order_line[:price]/100)} each)"
+p = "Total: #{number_to_currency(@order_total)}"
+h3 Customer Information
+form
+  div
+    label for="first_name" = "First Name: "
+    input name="first_name" id="first_name"
+  div
+    label for="last_name" = "Last Name: "
+    input name="last_name" id="last_name"
+  div
+    label for="address" = "Address: "
+    input name="address" id="address"
+  div
+    label for="city" = "City: "
+    input name="city" id="city" value="Winnipeg"
+  div
+    label for="province" = "Province: "
+    input name="province" id="province" value="MB"
+p
+  = link_to "Submit Cart", {controller: :view_cart, action: :index}, id: "submit_cart_link"
+div hidden=true id="submit_cart_url" var="#{root_url}submit_cart/index"
+div hidden=true id="go_to_url" var="#{root_url}view_cart/index"

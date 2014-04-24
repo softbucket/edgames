@@ -5,16 +5,19 @@ html
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
-body
-  p id="debug" = @debug
-  = link_to "EDGames", {controller: "welcome", action: "index"}, :id => "site_title"
-  div id="cms_navigation" class="navigation"
-    - @cms_pages.each do |cms_page|
-      - #link_to cms_page.page_name, {controller: "cms_output", action: "output"}, id: "cms_#{cms_page.page_name}", class: "cms_link"
-      a href='#{cms_page.page_name}' id="cms_#{cms_page.page_name}" class="cms_link" = cms_page.page_name
-
-  div id="specific_navigation" class="navigation"
-    = link_to "Search", "/search/search", class:"cms_link"
-    = link_to "View All Products", "/view_all_products", class:"cms_link"
-    = link_to "Navigate by Category", "/navigate_category", class:"cms_link"
-  = yield
+  body
+    p id="debug" = @debug
+    div id="flash_div"
+      p id="flash_message" = "#{flash[:user_message]}"
+    = link_to "EDGames", {controller: "welcome", action: "index"}, :id => "site_title"
+    div id="cms_navigation" class="navigation"
+      - @cms_pages.each do |cms_page|
+        - #link_to cms_page.page_name, {controller: "cms_output", action: "output"}, id: "cms_#{cms_page.page_name}", class: "cms_link"
+        a href='#{cms_page.page_name}' id="cms_#{cms_page.page_name}" class="cms_link" = cms_page.page_name
+  
+    div id="specific_navigation" class="navigation"
+      = link_to "Search", "/search/search", class:"cms_link"
+      = link_to "View All Products", "/view_all_products", class:"cms_link"
+      = link_to "Navigate by Category", "/navigate_category", class:"cms_link"
+      = link_to "View Cart", "/view_cart/index", class:"cms_link"
+    = yield

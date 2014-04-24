@@ -1,0 +1,10 @@
+h1 id="page_title" Cart
+- @cart.each do |order_line|
+  p
+    = order_line[:quantity]
+    = " #{order_line[:product].name}"
+- if @cart.length > 0
+  p
+    = link_to "Check out", controller: "check_out", action: "index"
+- else
+  p There is nothing in the cart at this time.

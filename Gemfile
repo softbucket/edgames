@@ -15,6 +15,9 @@ gem 'sqlite3'
 #gem for kaminari
 gem 'kaminari'
 
+#gem for carrierwave(file upload)
+gem 'carrierwave'
+
 # active admin
 gem 'activeadmin', github: 'gregbell/active_admin'
 

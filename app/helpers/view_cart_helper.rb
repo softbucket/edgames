@@ -1,0 +1,2 @@
+module ViewCartHelper
+end
